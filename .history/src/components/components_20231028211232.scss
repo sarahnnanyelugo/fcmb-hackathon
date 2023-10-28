@@ -1,0 +1,20 @@
+.beneficiary-modal {
+  height: 70px;
+  width: 100%;
+  border: dashed 1px #5c2684;
+  margin-top: 80px;
+  color: #5c2684;
+  padding-top: 20px;
+}
+.modal-content {
+  img {
+    border-radius: 50%;
+  }
+  h6 {
+    font-size: 13px;
+    margin-bottom: 0 !important;
+  }
+  p {
+    font-size: 11px;
+  }
+}

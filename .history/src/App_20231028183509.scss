@@ -1,0 +1,60 @@
+.app-header {
+  background-color: #282c34;
+  height: 1000px;
+  padding-top: 200px;
+  width: 100%;
+}
+
+.app {
+  border: solid 2px #fff;
+  height: 650px;
+  border-radius: 30px;
+}
+.app-inner {
+  border: solid 4px #717171;
+  height: 100%;
+  border-radius: 30px;
+}
+.app-inner2 {
+  border: solid 4px #000;
+  height: 100%;
+  border-radius: 30px;
+}
+.app-face {
+  background: #fff;
+  height: 100%;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+.flexy {
+  display: flex;
+}
+.flexy1 {
+  flex-grow: 1;
+}
+.balance {
+  h5 {
+    color: #5c2684;
+    margin-bottom: 30px;
+  }
+  small {
+    font-size: 11px;
+  }
+  img {
+    margin-top: -10px;
+  }
+}
+.access {
+  margin-top: 50px;
+  h6 {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+}
+.access2 {
+  margin-top: 20px;
+  h6 {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+}
