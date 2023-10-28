@@ -47,12 +47,17 @@
   padding: 7px 0;
 }
 .character {
-  border: solid 1px grey;
+  border: none;
   font-size: 15px;
   border-radius: 8px;
-  width: 50px;
+
   /* light theme */
   color: #272729;
-  background-color: #fff;
+  background-color: red;
   box-shadow: 0 2px 0 #e4e2f5;
+
+  /* dark theme */
+  color: #fff;
+  background-color: #222;
+  box-shadow: 0 2px 0 #444;
 }

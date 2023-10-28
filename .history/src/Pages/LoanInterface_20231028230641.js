@@ -102,8 +102,9 @@ function LoanInterface() {
                         />
                       </div>
                       <center>
-                        <PasswordInput />
+                        <button className="confirm-btn">Confirm loan</button>
                       </center>
+                      <PasswordInput />
                     </div>
                   </div>
                 </div>

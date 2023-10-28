@@ -5,7 +5,7 @@ import "./style.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Beneficiaries from "../components/Beneficiaries";
-import PasswordInput from "../components/PasswordInput";
+import { PasswordInput } from "../components/PasswordInput";
 
 function LoanInterface() {
   const [toDuration, setToDuration] = useState("2 days");
@@ -102,8 +102,9 @@ function LoanInterface() {
                         />
                       </div>
                       <center>
-                        <PasswordInput />
+                        <button className="confirm-btn">Confirm loan</button>
                       </center>
+                      <PasswordInput />
                     </div>
                   </div>
                 </div>
