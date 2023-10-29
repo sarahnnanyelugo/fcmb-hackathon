@@ -30,10 +30,12 @@ export const SuccessPage = () => {
                         <h5>₦10,000</h5>
                         <p>Request successfully sent!</p>
                       </div>
-                      <p style={{ marginTop: "30px", fontWeight: "bold" }}>
+                      <p style={{ marginTop: "30px", fontWeight: "600" }}>
                         Your loan request of<span> ₦10,000</span> has been sent
                         to{" "}
-                        <span style={{ fontSize: "14px" }}>Abraham Lawal</span>{" "}
+                        <span style={{ fontWeight: "bold" }}>
+                          Abraham Lawal
+                        </span>{" "}
                         and awaiting a response.
                       </p>
                       <p>Upon approval, payback date is:</p>

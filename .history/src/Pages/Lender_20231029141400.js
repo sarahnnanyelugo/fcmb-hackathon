@@ -18,7 +18,7 @@ import "./style.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Lender() {
   const [showBalance, setShowBalance] = useState(false);
   const [balance, setBalance] = useState("");
 
@@ -28,7 +28,6 @@ function Home() {
   return (
     <>
       <div className="app-header">
-        <Link to={"/lender"}>Lender View</Link>
         <center>
           <div className="col-md-3">
             <center>
@@ -114,6 +113,17 @@ function Home() {
                         </div>
                       </div>
                       <a href="#">Show More</a>
+                      <br />
+                      <h6 style={{ float: "left", fontSize: "10px" }}>
+                        P2P lending
+                      </h6>{" "}
+                      <br />
+                      <div className="col-md-12 alarm-box">
+                        <p>
+                          Afolabi Lawal is requesting <span>₦10,000</span> from
+                          you
+                        </p>
+                      </div>
                       <div className="flexy" style={{ marginTop: "20px" }}>
                         <h6 style={{ fontSize: "12px" }}>
                           Recent transactions
@@ -167,27 +177,24 @@ function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className=" footer">
-                        <div className="flexy">
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={HomeIcon} alt="icon" width="30%" />
-                            <h6 style={{ color: "#5c2684" }}>Home</h6>
-                          </div>
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={Piggy} alt="icon" width="30%" />
-                            <h6>Budget</h6>
-                          </div>
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={Settings} alt="icon" width="30%" />
-                            <h6>Setting</h6>
-                          </div>
+                      <div className="flexy footer">
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={HomeIcon} alt="icon" width="30%" />
+                          <h6 style={{ color: "#5c2684" }}>Home</h6>
                         </div>
-
-                        <div className="dash col-md-5">&nbsp;</div>
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={Piggy} alt="icon" width="30%" />
+                          <h6>Budget</h6>
+                        </div>
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={Settings} alt="icon" width="30%" />
+                          <h6>Setting</h6>
+                        </div>
                       </div>
+                      <div className="dash col-md-5">&nbsp;</div>
                     </div>
                   </div>
                 </div>
@@ -200,4 +207,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Lender;

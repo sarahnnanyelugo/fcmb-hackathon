@@ -220,7 +220,6 @@
 }
 .action-btns {
   margin-top: 50px;
-  margin-bottom: 20px;
   button {
     border-radius: 5px;
     padding: 5px;
@@ -228,11 +227,8 @@
   .btn-decline {
     border: solid 1px #5c2684;
     background: #fff;
-    color: #5c2684;
   }
   .btn-approve {
     background: #5c2684;
-    color: #fff;
-    border: none;
   }
 }

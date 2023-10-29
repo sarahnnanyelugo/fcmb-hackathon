@@ -167,8 +167,8 @@ function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className=" footer">
-                        <div className="flexy">
+                      <div className="">
+                        <div className="flexy  footer">
                           <div className="col-md-4">
                             {" "}
                             <img src={HomeIcon} alt="icon" width="30%" />

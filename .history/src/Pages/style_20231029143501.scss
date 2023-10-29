@@ -202,37 +202,3 @@
     font-weight: bold;
   }
 }
-.loan-details {
-  text-align: left;
-  margin-bottom: 30px;
-  h6 {
-    font-size: 12px;
-    margin-bottom: 0;
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  small {
-    font-size: 10px;
-  }
-  p {
-    margin-top: 30px;
-  }
-}
-.action-btns {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  button {
-    border-radius: 5px;
-    padding: 5px;
-  }
-  .btn-decline {
-    border: solid 1px #5c2684;
-    background: #fff;
-    color: #5c2684;
-  }
-  .btn-approve {
-    background: #5c2684;
-    color: #fff;
-    border: none;
-  }
-}

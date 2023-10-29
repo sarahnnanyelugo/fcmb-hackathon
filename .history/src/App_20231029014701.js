@@ -4,8 +4,6 @@ import Home from "./Pages/Home";
 import LoanInterface from "./Pages/LoanInterface";
 import "./App.scss";
 import { SuccessPage } from "./Pages/SuccessPage";
-import Lender from "./Pages/Lender";
-import LoanDetails from "./Pages/LoanDetails";
 function App() {
   return (
     <>
@@ -13,8 +11,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="loan-interface" element={<LoanInterface />} />
         <Route path="success-page" element={<SuccessPage />} />
-        <Route path="lender" element={<Lender />} />
-        <Route path="loan-details" element={<LoanDetails />} />
       </Routes>
     </>
   );

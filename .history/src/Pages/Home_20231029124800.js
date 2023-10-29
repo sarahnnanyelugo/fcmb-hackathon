@@ -27,8 +27,8 @@ function Home() {
   };
   return (
     <>
+      <Link to={"/lender"}>Lender View</Link>
       <div className="app-header">
-        <Link to={"/lender"}>Lender View</Link>
         <center>
           <div className="col-md-3">
             <center>
@@ -167,27 +167,24 @@ function Home() {
                           </div>
                         </div>
                       </div>
-                      <div className=" footer">
-                        <div className="flexy">
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={HomeIcon} alt="icon" width="30%" />
-                            <h6 style={{ color: "#5c2684" }}>Home</h6>
-                          </div>
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={Piggy} alt="icon" width="30%" />
-                            <h6>Budget</h6>
-                          </div>
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={Settings} alt="icon" width="30%" />
-                            <h6>Setting</h6>
-                          </div>
+                      <div className="flexy footer">
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={HomeIcon} alt="icon" width="30%" />
+                          <h6 style={{ color: "#5c2684" }}>Home</h6>
                         </div>
-
-                        <div className="dash col-md-5">&nbsp;</div>
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={Piggy} alt="icon" width="30%" />
+                          <h6>Budget</h6>
+                        </div>
+                        <div className="col-md-4">
+                          {" "}
+                          <img src={Settings} alt="icon" width="30%" />
+                          <h6>Setting</h6>
+                        </div>
                       </div>
+                      <div className="dash col-md-5">&nbsp;</div>
                     </div>
                   </div>
                 </div>

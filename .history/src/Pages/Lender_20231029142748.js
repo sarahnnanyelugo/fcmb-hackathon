@@ -18,7 +18,7 @@ import "./style.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Lender() {
   const [showBalance, setShowBalance] = useState(false);
   const [balance, setBalance] = useState("");
 
@@ -28,7 +28,6 @@ function Home() {
   return (
     <>
       <div className="app-header">
-        <Link to={"/lender"}>Lender View</Link>
         <center>
           <div className="col-md-3">
             <center>
@@ -72,7 +71,7 @@ function Home() {
                               )}
                             </span>
                           </div>
-                          <h5>{showBalance ? "₦2,000" : "******"}</h5>
+                          <h5>{showBalance ? "₦112,000" : "******"}</h5>
                         </div>
                       </center>
                       <h6 style={{ float: "left" }}>Quick access</h6>
@@ -114,6 +113,20 @@ function Home() {
                         </div>
                       </div>
                       <a href="#">Show More</a>
+                      <br />
+                      <h6 style={{ float: "left", fontSize: "10px" }}>
+                        P2P lending
+                      </h6>{" "}
+                      <br />
+                      <div className="col-md-12 alarm-box flexy">
+                        <p>
+                          Afolabi Lawal is requesting <span>₦10,000</span> from
+                          you
+                        </p>
+                        <Link to={"/loan-details"} style={{ fontSize: "10px" }}>
+                          Open
+                        </Link>
+                      </div>
                       <div className="flexy" style={{ marginTop: "20px" }}>
                         <h6 style={{ fontSize: "12px" }}>
                           Recent transactions
@@ -200,4 +213,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Lender;

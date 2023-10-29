@@ -10,7 +10,6 @@
   height: 720px;
   border-radius: 30px;
 }
-
 .app-inner {
   border: solid 4px #717171;
   height: 100%;
@@ -26,16 +25,12 @@
   height: 100%;
   border-radius: 30px;
   padding: 10px 20px 0px 20px;
-  overflow: scroll;
   a {
     color: #5c2684;
     text-decoration: none;
     font-size: 12px;
     font-weight: bold;
   }
-}
-.app-face::-webkit-scrollbar {
-  display: none;
 }
 .flexy {
   display: flex;
@@ -185,54 +180,9 @@
   }
 }
 .alarm-box {
-  padding: 3px 10px;
+  padding: 5px 10px;
   background: #efeaf3;
-  text-align: left;
   p {
     font-size: 11px;
-  }
-}
-.lender-amount {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  border-bottom: solid 1px rgb(204, 203, 203);
-  padding-bottom: 20px;
-  h4 {
-    color: #5c2684;
-    font-weight: bold;
-  }
-}
-.loan-details {
-  text-align: left;
-  margin-bottom: 30px;
-  h6 {
-    font-size: 12px;
-    margin-bottom: 0;
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  small {
-    font-size: 10px;
-  }
-  p {
-    margin-top: 30px;
-  }
-}
-.action-btns {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  button {
-    border-radius: 5px;
-    padding: 5px;
-  }
-  .btn-decline {
-    border: solid 1px #5c2684;
-    background: #fff;
-    color: #5c2684;
-  }
-  .btn-approve {
-    background: #5c2684;
-    color: #fff;
-    border: none;
   }
 }
