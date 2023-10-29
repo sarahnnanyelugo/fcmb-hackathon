@@ -75,12 +75,10 @@ function LoanDetails() {
                           Decline
                         </button>
                         <Link
-                          to={"/loan-approval"}
-                          className="col-md-5 offset-md-2 "
+                          to={"/aproved"}
+                          className="col-md-5 offset-md-2 btn-approve"
                         >
-                          <button className="col-md-12 btn-approve">
-                            Approve
-                          </button>
+                          <button>Approve</button>
                         </Link>
                       </div>
                       <p style={{ color: "grey" }}>

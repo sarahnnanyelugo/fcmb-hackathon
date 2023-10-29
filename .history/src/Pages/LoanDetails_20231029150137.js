@@ -74,10 +74,7 @@ function LoanDetails() {
                         <button className="col-md-5 btn-decline">
                           Decline
                         </button>
-                        <Link
-                          to={"/loan-approval"}
-                          className="col-md-5 offset-md-2 "
-                        >
+                        <Link to={"/aproved"} className="col-md-5 offset-md-2 ">
                           <button className="col-md-12 btn-approve">
                             Approve
                           </button>
