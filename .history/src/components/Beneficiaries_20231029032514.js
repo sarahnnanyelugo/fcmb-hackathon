@@ -6,13 +6,14 @@ import Bank from "../assets/images/bank.png";
 import { AccList } from "./AccList";
 import { accList } from "../TestData.js/AccList";
 
-function Beneficiaries() {
+function Beneficiaries({ callBack }) {
   const [show, setShow] = useState(false);
   const [dt, setDt] = useState(undefined);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleData = (data) => {
+    callBack(data);
     setDt(data);
     handleClose();
   };
@@ -25,34 +26,6 @@ function Beneficiaries() {
     <>
       <div onClick={handleShow} className="beneficiary-modal">
         {!dt ? <p>+ Select peer from beneficiary list</p> : ""}
-        {dt ? (
-          <>
-            <small
-              className=""
-              style={{ float: "right", fontSize: "10px", cursor: "pointer" }}
-            >
-              Change Peer
-            </small>
-            <div className="flexy">
-              {" "}
-              <div className="col-md-2">
-                {" "}
-                <img
-                  src={dt.bank}
-                  alt="icon"
-                  width="80%"
-                  style={{ borderRadius: "50%" }}
-                />
-              </div>
-              <div>
-                <h6>{dt.bankName}</h6>
-                <p>{dt.accName}</p>
-              </div>
-            </div>
-          </>
-        ) : (
-          ""
-        )}
       </div>
       <Modal
         show={show}

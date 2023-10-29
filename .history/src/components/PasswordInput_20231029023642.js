@@ -19,16 +19,9 @@ function PasswordInput({ callBack }) {
     }
     callBack(v);
     setTimeout(() => {
-      checker();
-    }, 200);
+      setVerPin(localStorage.getItem("pin_ver", "null"));
+    }, 2500);
     return;
-  }
-  function checker() {
-    setVerPin(localStorage.getItem("pin_ver", "null"));
-    if (verPin == "null")
-      setTimeout(() => {
-        checker();
-      }, 2000);
   }
   return (
     <>
@@ -65,7 +58,7 @@ function PasswordInput({ callBack }) {
                   characterSelected: "character--selected",
                 }}
               />
-              {pinCount === true && verPin == "null" ? (
+              {pinCount === true && verPin !== "null" ? (
                 <img src={Bank} alt="icon" width="20%" className="rotate" />
               ) : (
                 ""

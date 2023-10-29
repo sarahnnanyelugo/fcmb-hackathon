@@ -37,12 +37,7 @@ function Beneficiaries() {
               {" "}
               <div className="col-md-2">
                 {" "}
-                <img
-                  src={dt.bank}
-                  alt="icon"
-                  width="80%"
-                  style={{ borderRadius: "50%" }}
-                />
+                <img src={dt.bank} alt="icon" width="80%" />
               </div>
               <div>
                 <h6>{dt.bankName}</h6>

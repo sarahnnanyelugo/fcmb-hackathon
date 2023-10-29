@@ -19,16 +19,9 @@ function PasswordInput({ callBack }) {
     }
     callBack(v);
     setTimeout(() => {
-      checker();
-    }, 200);
+      setVerPin(localStorage.getItem("pin_ver", "null"));
+    }, 2500);
     return;
-  }
-  function checker() {
-    setVerPin(localStorage.getItem("pin_ver", "null"));
-    if (verPin == "null")
-      setTimeout(() => {
-        checker();
-      }, 2000);
   }
   return (
     <>

@@ -34,18 +34,9 @@ function Beneficiaries() {
               Change Peer
             </small>
             <div className="flexy">
-              {" "}
-              <div className="col-md-2">
-                {" "}
-                <img
-                  src={dt.bank}
-                  alt="icon"
-                  width="80%"
-                  style={{ borderRadius: "50%" }}
-                />
-              </div>
               <div>
-                <h6>{dt.bankName}</h6>
+                <img src={dt.bank} />
+                <strong>{dt.bankName}</strong>
                 <p>{dt.accName}</p>
               </div>
             </div>

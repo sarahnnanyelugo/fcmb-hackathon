@@ -8,14 +8,9 @@ import { accList } from "../TestData.js/AccList";
 
 function Beneficiaries() {
   const [show, setShow] = useState(false);
-  const [dt, setDt] = useState(undefined);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleData = (data) => {
-    setDt(data);
-    handleClose();
-  };
   const [state2, setState2] = useState({
     query: "",
 
@@ -24,35 +19,7 @@ function Beneficiaries() {
   return (
     <>
       <div onClick={handleShow} className="beneficiary-modal">
-        {!dt ? <p>+ Select peer from beneficiary list</p> : ""}
-        {dt ? (
-          <>
-            <small
-              className=""
-              style={{ float: "right", fontSize: "10px", cursor: "pointer" }}
-            >
-              Change Peer
-            </small>
-            <div className="flexy">
-              {" "}
-              <div className="col-md-2">
-                {" "}
-                <img
-                  src={dt.bank}
-                  alt="icon"
-                  width="80%"
-                  style={{ borderRadius: "50%" }}
-                />
-              </div>
-              <div>
-                <h6>{dt.bankName}</h6>
-                <p>{dt.accName}</p>
-              </div>
-            </div>
-          </>
-        ) : (
-          ""
-        )}
+        <p>+ Select peer from beneficiary list</p>
       </div>
       <Modal
         show={show}
@@ -71,16 +38,15 @@ function Beneficiaries() {
             <form>
               <input type="search" placeholder="search" />
             </form>
-
-            <div className="row ">
-              {state2.list2.map((data, index) => (
-                <AccList data={data} onClick={handleData} />
-              ))}
-
-              <center>
-                <a href="#">View more</a>
-              </center>
-            </div>
+         
+           <div className="row ">
+                {state2.list2.map((data, index) => (
+                  <AccList data={data} />
+                ))}
+            
+            <center>
+              <a href="#">View more</a>
+            </center>
           </div>
         </Modal.Body>
       </Modal>

@@ -8,7 +8,7 @@ import VerificationInput from "react-verification-input";
 
 function PasswordInput({ callBack }) {
   const [show, setShow] = useState(false);
-  const [verPin, setVerPin] = useState("null");
+  const [ver, setVer] = useState(null);
   const [pinCount, setPinCount] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,16 +19,9 @@ function PasswordInput({ callBack }) {
     }
     callBack(v);
     setTimeout(() => {
-      checker();
-    }, 200);
+      setVer(localStorage.getItem("pin_ver", null));
+    }, 2500);
     return;
-  }
-  function checker() {
-    setVerPin(localStorage.getItem("pin_ver", "null"));
-    if (verPin == "null")
-      setTimeout(() => {
-        checker();
-      }, 2000);
   }
   return (
     <>
@@ -65,12 +58,11 @@ function PasswordInput({ callBack }) {
                   characterSelected: "character--selected",
                 }}
               />
-              {pinCount === true && verPin == "null" ? (
+              {pinCount === true && ver != null ? (
                 <img src={Bank} alt="icon" width="20%" className="rotate" />
               ) : (
                 ""
-              )}{" "}
-              {pinCount === true && verPin === "false" ? <p>pin error</p> : ""}
+              )}
             </center>
           </div>
         </Modal.Body>

@@ -28,8 +28,8 @@ function LoanInterface() {
       console.log("validating pin");
       console.log(localStorage.setItem("pin_ver", "null"));
       if (pin == validPin) {
+        console.log(localStorage.setItem("pin_ver", "true"));
         const timeoutId = setTimeout(() => {
-          console.log(localStorage.setItem("pin_ver", "true"));
           navigate("/success-page");
         }, 2000);
 
@@ -38,9 +38,7 @@ function LoanInterface() {
           clearTimeout(timeoutId);
         };
       } else {
-        setTimeout(() => {
-          console.log(localStorage.setItem("pin_ver", "false"));
-        }, 5000);
+        console.log(localStorage.setItem("pin_ver", "false"));
       }
     }
   }, [pin]);

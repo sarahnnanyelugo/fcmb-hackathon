@@ -28,7 +28,7 @@ function PasswordInput({ callBack }) {
     if (verPin == "null")
       setTimeout(() => {
         checker();
-      }, 2000);
+      }, 200);
   }
   return (
     <>

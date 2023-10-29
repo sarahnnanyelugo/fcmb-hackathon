@@ -40,7 +40,7 @@ function LoanInterface() {
       } else {
         setTimeout(() => {
           console.log(localStorage.setItem("pin_ver", "false"));
-        }, 5000);
+        }, 1500);
       }
     }
   }, [pin]);

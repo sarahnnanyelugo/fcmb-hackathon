@@ -38,9 +38,7 @@ function LoanInterface() {
           clearTimeout(timeoutId);
         };
       } else {
-        setTimeout(() => {
-          console.log(localStorage.setItem("pin_ver", "false"));
-        }, 5000);
+        console.log(localStorage.setItem("pin_ver", "false"));
       }
     }
   }, [pin]);

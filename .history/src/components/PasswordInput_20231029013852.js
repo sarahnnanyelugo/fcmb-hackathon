@@ -2,34 +2,16 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./components.scss";
-import Bank from "../assets/images/loader.png";
+import Bank from "../assets/images/bank.png";
 import InputCode from "./VerificationCodeInput/VerifyCode";
 import VerificationInput from "react-verification-input";
 
-function PasswordInput({ callBack }) {
+function PasswordInput(cb) {
   const [show, setShow] = useState(false);
-  const [verPin, setVerPin] = useState("null");
-  const [pinCount, setPinCount] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function handleChange(v) {
-    if (v.length === 4) {
-      setPinCount(true);
-    }
-    callBack(v);
-    setTimeout(() => {
-      checker();
-    }, 200);
-    return;
-  }
-  function checker() {
-    setVerPin(localStorage.getItem("pin_ver", "null"));
-    if (verPin == "null")
-      setTimeout(() => {
-        checker();
-      }, 2000);
-  }
   return (
     <>
       <button onClick={handleShow} className="confirm-btn">
@@ -57,7 +39,7 @@ function PasswordInput({ callBack }) {
                 inputProps={{ inputMode: "numeric" }}
                 length={4}
                 autoFocus="true"
-                onChange={handleChange}
+                onChange={cb}
                 classNames={{
                   container: "container",
                   character: "character",
@@ -65,12 +47,6 @@ function PasswordInput({ callBack }) {
                   characterSelected: "character--selected",
                 }}
               />
-              {pinCount === true && verPin == "null" ? (
-                <img src={Bank} alt="icon" width="20%" className="rotate" />
-              ) : (
-                ""
-              )}{" "}
-              {pinCount === true && verPin === "false" ? <p>pin error</p> : ""}
             </center>
           </div>
         </Modal.Body>
