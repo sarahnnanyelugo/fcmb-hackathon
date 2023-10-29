@@ -27,7 +27,7 @@ export const SuccessPage = () => {
                             <img src={Tick} alt="icon" width="100%" />
                           </div>
                         </center>
-                        <h5>₦10,000</h5>
+                        <h6>₦10,000</h6>
                         <p>Request successfully sent!</p>
                       </div>
                       <p style={{ marginTop: "30px", fontWeight: "bold" }}>

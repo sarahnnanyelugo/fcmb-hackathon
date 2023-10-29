@@ -67,7 +67,8 @@ function PasswordInput({ callBack }) {
                 }}
               />
               {pinCount === true && verPin == "null" ? (
-                <img src={Bank} alt="icon" width="20%" className="rotate" />
+                // <img src={Bank} alt="icon" width="20%" className="rotate" />
+                <Loader />
               ) : (
                 ""
               )}{" "}

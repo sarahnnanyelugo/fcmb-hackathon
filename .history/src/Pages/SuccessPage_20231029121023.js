@@ -27,12 +27,14 @@ export const SuccessPage = () => {
                             <img src={Tick} alt="icon" width="100%" />
                           </div>
                         </center>
-                        <h5>₦10,000</h5>
-                        <p>Request successfully sent!</p>
+                        <h6>₦10,000</h6>
+                        <p style={{ marginBottom: "30px" }}>
+                          Request successfully sent!
+                        </p>
                       </div>
-                      <p style={{ marginTop: "30px", fontWeight: "bold" }}>
-                        Your loan request of<span> ₦10,000</span> has been sent
-                        to OJ and awaiting a response.
+                      <p>
+                        Your loan request of ₦10,000 has been sent to OJ and
+                        awaiting a response.
                       </p>
                       <p>Upon approval, payback date is:</p>
                       <h3 style={{ marginBottom: "50px" }}>27/04/2023</h3>
