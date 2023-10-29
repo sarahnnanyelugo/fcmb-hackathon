@@ -35,9 +35,9 @@ export const SuccessPage = () => {
                         to OJ and awaiting a response.
                       </p>
                       <p>Upon approval, payback date is:</p>
-                      <h5 style={{ marginBottom: "50px", fontWeight: "bold" }}>
+                      <h4 style={{ marginBottom: "50px", fontWeight: "bold" }}>
                         27/04/2023
-                      </h5>
+                      </h4>
                       <Link to={"/"}>
                         {" "}
                         <button className="confirm-btn">Back to home</button>

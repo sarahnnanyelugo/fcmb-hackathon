@@ -29,15 +29,11 @@ function Beneficiaries() {
           <>
             <small
               className=""
-              style={{
-                float: "right",
-                fontSize: "8px",
-                cursor: "pointer",
-              }}
+              style={{ float: "right", fontSize: "10px", cursor: "pointer" }}
             >
               Change Peer
             </small>
-            <div className="flexy" style={{ marginTop: "20px" }}>
+            <div className="flexy">
               {" "}
               <div className="col-md-2">
                 {" "}
@@ -49,8 +45,8 @@ function Beneficiaries() {
                 />
               </div>
               <div>
-                <h6 style={{ marginBottom: 0 }}>{dt.bankName}</h6>
-                <p style={{ color: "#000" }}>{dt.accName}</p>
+                <h6>{dt.bankName}</h6>
+                <p>{dt.accName}</p>
               </div>
             </div>
           </>

@@ -6,7 +6,6 @@ import Bank from "../assets/images/loader.png";
 import InputCode from "./VerificationCodeInput/VerifyCode";
 import VerificationInput from "react-verification-input";
 import { Loader } from "./Loader";
-import { Link } from "react-router-dom";
 
 function PasswordInput({ callBack }) {
   const [show, setShow] = useState(false);
@@ -73,16 +72,7 @@ function PasswordInput({ callBack }) {
                 ""
               )}{" "}
               {pinCount === true && verPin === "false" ? (
-                <>
-                  <br />
-                  <Link to={"/"} className="forgot-pin">
-                    Forgot Pin
-                  </Link>
-                  <p className="error-msg">
-                    Incorrect pin. <span>2</span> more attempts before being
-                    locked out for 1 hour
-                  </p>
-                </>
+                <p className="error-msg">pin error</p>
               ) : (
                 ""
               )}

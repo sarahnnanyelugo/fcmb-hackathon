@@ -74,10 +74,8 @@ function PasswordInput({ callBack }) {
               )}{" "}
               {pinCount === true && verPin === "false" ? (
                 <>
-                  <br />
-                  <Link to={"/"} className="forgot-pin">
-                    Forgot Pin
-                  </Link>
+                  {" "}
+                  <Link to={"/"}>Forgot Pin</Link>
                   <p className="error-msg">
                     Incorrect pin. <span>2</span> more attempts before being
                     locked out for 1 hour

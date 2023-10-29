@@ -50,7 +50,7 @@ function Beneficiaries() {
               </div>
               <div>
                 <h6 style={{ marginBottom: 0 }}>{dt.bankName}</h6>
-                <p style={{ color: "#000" }}>{dt.accName}</p>
+                <p>{dt.accName}</p>
               </div>
             </div>
           </>

@@ -24,15 +24,15 @@ export const accList = [
     id: 3,
   },
   {
-    accName: "Abraham Lawal",
+    accName: "Team3",
     bankName: "Access Bank",
     bank: Bank5,
-    id: 4,
+    id: 3,
   },
   {
-    accName: "Okechukwu Onyesu",
+    accName: "Team3",
     bankName: "Union Bank of Africa",
     bank: Bank6,
-    id: 5,
+    id: 3,
   },
 ];

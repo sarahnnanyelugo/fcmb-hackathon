@@ -1,10 +1,10 @@
 .beneficiary-modal {
-  height: 80px;
+  height: 70px;
   width: 100%;
   border: dashed 1px #5c2684;
   margin-top: 80px;
   color: #5c2684;
-  padding-top: 5px;
+  padding-top: 20px;
   p {
     font-size: 13px;
   }
@@ -69,11 +69,4 @@
 }
 .error-msg {
   color: red;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.forgot-pin {
-  color: #5c2684;
-  text-decoration: none;
-  font-weight: bold;
 }

@@ -74,8 +74,8 @@ function PasswordInput({ callBack }) {
               )}{" "}
               {pinCount === true && verPin === "false" ? (
                 <>
-                  <br />
-                  <Link to={"/"} className="forgot-pin">
+                  {" "}
+                  <Link to={"/"} className="fotgot-pin">
                     Forgot Pin
                   </Link>
                   <p className="error-msg">
