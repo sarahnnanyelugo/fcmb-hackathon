@@ -40,9 +40,6 @@ export const SuccessPage = () => {
                         {" "}
                         <button className="confirm-btn">Back to home</button>
                       </Link>
-                      <br />
-                      <br />
-                      <br />
                       <div className="dash col-md-5">&nbsp;</div>
                     </div>
                   </div>
