@@ -1,4 +1,5 @@
 import React from "react";
+import curr from "../components/Utilities";
 
 export const Records = ({ data }) => {
   const { color, Bank, accName, amount, date, status, category } = data;
@@ -17,7 +18,7 @@ export const Records = ({ data }) => {
         <p>{date}</p>
       </div>
       <div className="offset-md-2 col-md-2">
-        <h6 style={{ fontSize: "12px" }}>{amount}</h6>
+        <h6 style={{ fontSize: "12px" }}>{curr(amount)}</h6>
         <p style={{ color }}>{status}</p>
       </div>
     </div>

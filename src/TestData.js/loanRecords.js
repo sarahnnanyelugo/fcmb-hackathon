@@ -15,6 +15,7 @@ export const loanRecords = [
     amount: 10000,
     category: ["received"],
     id: 1,
+    beneficiary_id: 1,
   },
   {
     accName: " Micheal Afolabi",
@@ -25,6 +26,7 @@ export const loanRecords = [
     amount: 1000,
     color: "red",
     id: 2,
+    beneficiary_id: 2,
     category: ["received"],
   },
   {
@@ -36,6 +38,7 @@ export const loanRecords = [
     color: "orange",
     amount: 5000,
     id: 3,
+    beneficiary_id: 3,
     category: ["sent"],
   },
   {
@@ -47,6 +50,7 @@ export const loanRecords = [
     color: "green",
     amount: 10000,
     id: 4,
+    beneficiary_id: 4,
     category: ["received"],
   },
   {
@@ -58,6 +62,7 @@ export const loanRecords = [
     color: "green",
     amount: 2000,
     id: 5,
+    beneficiary_id: 5,
     category: ["sent"],
   },
 ];

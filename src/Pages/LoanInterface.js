@@ -33,7 +33,7 @@ function LoanInterface() {
 
   useEffect(() => {
     setPayBackDate(dt({ numberOfDays: parseInt(toDuration) }));
-  }, toDuration);
+  }, [toDuration]);
 
   useEffect(() => {
     const requestorData = {

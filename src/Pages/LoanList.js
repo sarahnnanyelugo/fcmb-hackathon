@@ -11,15 +11,24 @@ import { Records } from "../components/Records";
 function LoanList() {
   const [category, setCategory] = useState("sent");
   const [filteredRecords, setFilteredRecords] = useState(loanRecords);
+  const [recs, setRecs] = useState(loanRecords);
   function setCat(cat) {
     setCategory(cat);
   }
   useEffect(() => {
+    const records = JSON.parse(localStorage.getItem("records", [])) || [];
+    if (records && records.length > 0) {
+      setRecs(records);
+    } else {
+      console.log(localStorage.setItem("records", JSON.stringify(loanRecords)));
+    }
+  }, []);
+  useEffect(() => {
     if (category === "*") {
-      setFilteredRecords(loanRecords);
+      setFilteredRecords(recs);
     } else {
       setFilteredRecords(
-        loanRecords.filter((prd) => prd.category.indexOf(category) !== -1)
+        recs.filter((prd) => prd.category.indexOf(category) !== -1)
       );
     }
   }, [category]);
@@ -57,16 +66,14 @@ function LoanList() {
                             category === "sent" ? "prd-active" : ""
                           }`}
                           onClick={() => setCat("sent")}
-                          style={{ fontSize: "12px" }}
-                        >
+                          style={{ fontSize: "12px" }}>
                           <h6 style={{ fontSize: "10px" }}>Sent requests</h6>
                         </span>
                         <span
                           className={`btn ${
                             category === "received" ? "prd-active" : ""
                           }`}
-                          onClick={() => setCat("received")}
-                        >
+                          onClick={() => setCat("received")}>
                           {" "}
                           <h6 style={{ fontSize: "10px" }}>
                             Received requests
@@ -75,7 +82,7 @@ function LoanList() {
                       </div>
                       <section className="">
                         {filteredRecords.map((data, index) => (
-                          <Records data={data} />
+                          <Records data={data} key={data.id} />
                         ))}
                       </section>
                     </div>

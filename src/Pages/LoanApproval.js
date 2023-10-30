@@ -23,6 +23,9 @@ export const LoanApproval = () => {
   const [loanData, setLoanData] = useState(
     JSON.parse(localStorage.getItem("request_from", {})) || null
   );
+  const [records, setRecords] = useState(
+    JSON.parse(localStorage.getItem("records", [])) || []
+  );
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const lenderBalance = parseFloat(balance) - parseFloat(requestAmount);
@@ -30,7 +33,33 @@ export const LoanApproval = () => {
       parseFloat(requestorBalance) + parseFloat(requestAmount);
     console.log(localStorage.setItem("lender_balance", lenderBalance));
     console.log(localStorage.setItem("requestor_balance", requestorsBalance));
-    loanData.status = true;
+    loanData.status = "Approved";
+    loanData.color = "green";
+    // Find the record with ID 1
+    const recordToUpdate = records.find((record) => record.id === loanData.id);
+
+    if (recordToUpdate) {
+      // Create a new updated record with the status changed
+      const updatedRecord = {
+        ...recordToUpdate,
+        status: "Approved",
+        color: "green",
+      };
+
+      // Create a new array with the updated record
+      const updatedRecords = records.map((record) => {
+        return record.id === updatedRecord.id ? updatedRecord : record;
+      });
+
+      // Update the state with the new records array
+      setRecords(updatedRecords);
+      console.log(
+        localStorage.setItem("records", JSON.stringify(updatedRecords))
+      );
+    } else {
+      console.log("Record with ID not found");
+    }
+
     console.log(localStorage.setItem("request_from", JSON.stringify(loanData)));
     setTimeout(() => {
       setLoading(false);

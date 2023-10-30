@@ -127,12 +127,12 @@ function Lender() {
                           <h6>Data purchase</h6>
                         </div>
                       </div>
-                      <a href="#">Show More</a>
+                      <Link to="/loan-list">Show More</Link>
                       <br />
                       <h6 style={{ float: "left", fontSize: "10px" }}>
                         P2P lending
                       </h6>{" "}
-                      {loanData && !loanData.status ? (
+                      {loanData && loanData.status === "Pending" ? (
                         <>
                           <br />
                           <div className="col-md-12 alarm-box flexy">

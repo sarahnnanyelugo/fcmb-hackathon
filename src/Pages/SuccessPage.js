@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Top from "../assets/images/top.png";
 import Tick from "../assets/images/tick.png";
 import curr, { dt } from "../components/Utilities";
+import { loanRecords } from "../TestData.js";
 
 import "./style.scss";
 import { Link } from "react-router-dom";
+import { Records } from "../components/Records";
 export const SuccessPage = () => {
+  const [recs, setRecs] = useState(loanRecords);
   const amount = parseFloat(localStorage.getItem("amount")) || 0; // Parse the value from localStorage
   const loanData = JSON.parse(localStorage.getItem("request_from")) || {};
   let paybackDate = new Date(new Date());
@@ -13,15 +16,42 @@ export const SuccessPage = () => {
   // Extract the number of days from the loanPayDate string
   const numberOfDays = parseInt(loanPayDate);
   const formattedDate = dt({ numberOfDays });
-
+  useEffect(() => {
+    const records = JSON.parse(localStorage.getItem("records", [])) || [];
+    if (records && records.length > 0) {
+      setRecs(records);
+    } else {
+      console.log(localStorage.setItem("records", JSON.stringify(loanRecords)));
+    }
+  }, []);
   useEffect(() => {
     loanData.numberOfDays = numberOfDays;
     loanData.amount = amount;
     loanData.paybackDate = formattedDate;
-    loanData.status = false;
+    loanData.Bank = loanData.bank;
+    loanData.status = "Pending";
     loanData.loan_note = localStorage.getItem("loan_note", null);
+
+    // Initialize a variable to keep track of the highest ID
+    let highestId = 0;
+
+    // Iterate through the records array to find the highest ID
+    const records2 = JSON.parse(localStorage.getItem("records", [])) || [];
+    console.log(records2);
+    records2.forEach((record) => {
+      if (record.id > highestId) {
+        highestId = record.id;
+      }
+    });
+    loanData.id = highestId + 1;
+    loanData.date = dt(0, true);
+    loanData.color = "orange";
+    loanData.category = ["received"];
+    records2.push(loanData);
     console.log(localStorage.setItem("request_from", JSON.stringify(loanData)));
-  });
+    console.log(localStorage.setItem("records", JSON.stringify(records2)));
+    // console.log(recs);
+  }, []);
 
   // Format the amount as currency using the user's locale
   const formattedAmount = curr(amount);
