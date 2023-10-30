@@ -39,7 +39,7 @@ function Home() {
   };
   const [state, setState] = useState({
     query: "",
-    list: recentTransactions,
+    list: recentTransactions.slice(0).sort((a, b) => b.id - a.id),
   });
   return (
     <>
