@@ -8,7 +8,7 @@ import VerificationInput from "react-verification-input";
 import { Loader } from "./Loader";
 import { Link } from "react-router-dom";
 
-function PasswordInput({ callBack }) {
+function PasswordInput({ cls, callBack }) {
   const [show, setShow] = useState(false);
   const [verPin, setVerPin] = useState("null");
   const [pinCount, setPinCount] = useState(false);
@@ -34,7 +34,7 @@ function PasswordInput({ callBack }) {
   }
   return (
     <>
-      <button onClick={handleShow} className="confirm-btn">
+      <button onClick={handleShow} className={cls || "confirm-btn"}>
         Confirm loan
       </button>
       <Modal
@@ -42,8 +42,7 @@ function PasswordInput({ callBack }) {
         onHide={handleClose}
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered>
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>

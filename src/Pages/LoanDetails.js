@@ -6,8 +6,12 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import curr from "../components/Utilities";
+import PasswordInput from "../components/PasswordInput";
+import { useNavigate } from "react-router-dom";
 
 function LoanDetails() {
+  const navigate = useNavigate();
+  const [pin, setPin] = useState("");
   const [balance, setBalance] = useState(
     localStorage.getItem("lender_balance", "200000") || 200000.45
   );
@@ -20,6 +24,32 @@ function LoanDetails() {
   const [loanData, setLoanData] = useState(
     JSON.parse(localStorage.getItem("request_from", {})) || null
   );
+  const validPin = "5525";
+  function confirmPin(pin) {
+    setPin(pin);
+  }
+  useEffect(() => {
+    if (pin.length == 4) {
+      console.log("pin ok");
+      console.log("validating pin");
+      console.log(localStorage.setItem("pin_ver", "null"));
+      if (pin == validPin) {
+        const timeoutId = setTimeout(() => {
+          console.log(localStorage.setItem("pin_ver", "true"));
+          navigate("/loan-approval");
+        }, 2000);
+
+        return () => {
+          // Clean up the timeout if the component unmounts before the 2 seconds.
+          clearTimeout(timeoutId);
+        };
+      } else {
+        setTimeout(() => {
+          console.log(localStorage.setItem("pin_ver", "false"));
+        }, 5000);
+      }
+    }
+  }, [pin]);
   return (
     <>
       <div className="app-header">
@@ -42,7 +72,7 @@ function LoanDetails() {
                       <div className="col-md-12 lender-amount">
                         {" "}
                         <h6>
-                          From <span>{loanData.accName}</span>
+                          From <span>{requestor.accName}</span>
                         </h6>
                         <h4>{curr(loanData.amount)}</h4>
                       </div>
@@ -62,7 +92,7 @@ function LoanDetails() {
                         </div>
                         <div className="col-md-4">
                           <div>
-                            <h6>{loanData.accName}</h6>
+                            <h6>{requestor.accName}</h6>
                             <small>0123456789</small>
                           </div>
                           <p>{loanData.numberOfDays} days</p>
@@ -83,13 +113,10 @@ function LoanDetails() {
                             <button className="col-md-5 btn-decline">
                               Decline
                             </button>
-                            <Link
-                              to={"/loan-approval"}
-                              className="col-md-5 offset-md-2 ">
-                              <button className="col-md-12 btn-approve">
-                                Approve
-                              </button>
-                            </Link>
+                            <PasswordInput
+                              callBack={confirmPin}
+                              cls="offset-md-2 btn-approve"
+                            />
                           </div>
                         </>
                       ) : (

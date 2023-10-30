@@ -1,6 +1,6 @@
 import Top from "../assets/images/top.png";
 import Back from "../assets/images/back.png";
-import Bank from "../assets/images/gtb.png";
+import Bank from "../assets/images/fcmb.png";
 
 import "./style.scss";
 import curr, { dt } from "../components/Utilities";
@@ -37,8 +37,8 @@ function LoanInterface() {
 
   useEffect(() => {
     const requestorData = {
-      accName: "James Nnanyelugo",
-      bankName: "Guarantee Trust Bank",
+      accName: "Stars Team",
+      bankName: "First City Monument Bank",
       bank: Bank,
     };
     console.log(
