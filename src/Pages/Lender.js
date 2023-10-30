@@ -137,7 +137,7 @@ function Lender() {
                           <br />
                           <div className="col-md-12 alarm-box flexy">
                             <p>
-                              {loanData.accName} is requesting{" "}
+                              {requestor.accName} is requesting{" "}
                               <span>{curr(loanData.amount)}</span> from you.
                             </p>
                             <Link
