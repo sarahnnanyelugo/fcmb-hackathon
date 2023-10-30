@@ -14,6 +14,7 @@ function Beneficiaries() {
   const handleShow = () => setShow(true);
   const handleData = (data) => {
     setDt(data);
+    console.log(localStorage.setItem("request_from", JSON.stringify(data)));
     handleClose();
   };
   const [state2, setState2] = useState({
@@ -24,7 +25,13 @@ function Beneficiaries() {
   return (
     <>
       <div onClick={handleShow} className="beneficiary-modal">
-        {!dt ? <p>+ Select peer from beneficiary list</p> : ""}
+        {!dt ? (
+          <p style={{ cursor: "pointer" }}>
+            + Select peer from beneficiary list
+          </p>
+        ) : (
+          ""
+        )}
         {dt ? (
           <>
             <small
@@ -33,8 +40,7 @@ function Beneficiaries() {
                 float: "right",
                 fontSize: "8px",
                 cursor: "pointer",
-              }}
-            >
+              }}>
               Change Peer
             </small>
             <div className="flexy" style={{ marginTop: "20px" }}>
@@ -63,8 +69,7 @@ function Beneficiaries() {
         onHide={handleClose}
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered>
         <Modal.Header closeButton>
           <Modal.Title>
             <h6>Select Peer</h6>

@@ -12,16 +12,33 @@ import { useNavigate } from "react-router-dom";
 function LoanInterface() {
   const [pin, setPin] = useState("");
   const [toDuration, setToDuration] = useState("2 days");
+  const [amount, setAmount] = useState(0);
+  const [loanNote, setLoanNote] = useState(null);
   const navigate = useNavigate();
   function setThisDuration(curr) {
     if (curr !== toDuration) {
       setToDuration(curr);
+      console.log(localStorage.setItem("duration", curr));
     }
   }
   const validPin = "5525";
   function confirmPin(pin) {
     setPin(pin);
   }
+
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+    console.log(localStorage.setItem("amount", e.target.value));
+  };
+  const handleNoteChange = (e) => {
+    setLoanNote(e.target.value);
+    console.log(localStorage.setItem("loan_note", e.target.value));
+  };
+
+  useEffect(() => {
+    console.log(localStorage.setItem("duration", toDuration));
+  });
+
   useEffect(() => {
     if (pin.length == 4) {
       console.log("pin ok");
@@ -73,7 +90,11 @@ function LoanInterface() {
                       </div>
                       <div className="col-md-12 amount">
                         <h6 style={{ float: "left" }}>Loan Amount (₦)</h6>
-                        <input placeholder="₦10,000" type="text" />
+                        <input
+                          onChange={handleAmount}
+                          placeholder="₦10,000"
+                          type="number"
+                        />
                       </div>
                       <div className="col-md-12 duration">
                         <h6 style={{ float: "left" }}>Loan Duration</h6>
@@ -84,8 +105,7 @@ function LoanInterface() {
                             id="btn1"
                             className={` ${
                               toDuration === "2 days" ? "curr-active" : ""
-                            }`}
-                          >
+                            }`}>
                             2 days
                           </button>
                           <button
@@ -93,8 +113,7 @@ function LoanInterface() {
                             id="btn2"
                             className={` ${
                               toDuration === "4 days" ? "curr-active" : ""
-                            }`}
-                          >
+                            }`}>
                             4 days
                           </button>
                           <button
@@ -102,8 +121,7 @@ function LoanInterface() {
                             id="btn3"
                             className={` ${
                               toDuration === "6 days" ? "curr-active" : ""
-                            }`}
-                          >
+                            }`}>
                             6 days
                           </button>
                           <button
@@ -111,8 +129,7 @@ function LoanInterface() {
                             id="btn4"
                             className={` ${
                               toDuration === "Custom" ? "curr-active" : ""
-                            }`}
-                          >
+                            }`}>
                             Custom
                           </button>
                         </div>
@@ -128,6 +145,7 @@ function LoanInterface() {
                           <small className="offset-md-7">(Optional)</small>
                         </div>
                         <textarea
+                          onChange={handleNoteChange}
                           placeholder="eg: It will really mean a lot to me if you could help me with this amount to sort out my daughter's medical bills. Thanks"
                           className="form-control"
                         />
