@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Top from "../assets/images/top.png";
 import Tick from "../assets/images/tick.png";
 import LoadingImg from "../assets/images/ld.gif";
-import curr from "../components/Utilities";
-
+import curr, { dt } from "../components/Utilities";
+import { recentTransactions } from "../TestData.js";
+import Out from "../assets/images/arrow.png";
+import In from "../assets/images/add.png";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { Loader } from "../components/Loader";
@@ -27,10 +29,62 @@ export const LoanApproval = () => {
     JSON.parse(localStorage.getItem("records", [])) || []
   );
   const [loading, setLoading] = useState(true);
+
+  const [recs, setRecs] = useState(recentTransactions);
+  useEffect(() => {
+    const records =
+      JSON.parse(localStorage.getItem("recent_transactions", [])) || [];
+    if (records && records.length > 0) {
+      setRecs(records);
+    } else {
+      console.log(
+        localStorage.setItem(
+          "recent_transactions",
+          JSON.stringify(recentTransactions)
+        )
+      );
+    }
+  }, []);
+
   useEffect(() => {
     const lenderBalance = parseFloat(balance) - parseFloat(requestAmount);
     const requestorsBalance =
       parseFloat(requestorBalance) + parseFloat(requestAmount);
+    let highestTransactionId = 0;
+
+    // Iterate through the records array to find the highest ID
+    const records2 =
+      JSON.parse(localStorage.getItem("recent_transactions", [])) || [];
+    console.log(records2);
+    records2.forEach((record) => {
+      if (record.id > highestTransactionId) {
+        highestTransactionId = record.id;
+      }
+    });
+    const senderTransactionId = highestTransactionId + 1;
+    const receiverTransactionId = highestTransactionId + 2;
+    const transactionDate = dt(0, true);
+    const senderTransaction = {
+      purchase: "Peer 2 Peer loan",
+      Bank: In,
+      amount: parseFloat(requestAmount),
+      id: senderTransactionId,
+      beneficiary_id: 1,
+      date: transactionDate,
+    };
+    const receiverTransaction = {
+      purchase: "Peer 2 Peer loan",
+      Bank: Out,
+      amount: 0 - parseFloat(requestAmount),
+      id: receiverTransactionId,
+      beneficiary_id: 2,
+      date: transactionDate,
+    };
+    records2.push(receiverTransaction);
+    records2.push(senderTransaction);
+    console.log(
+      localStorage.setItem("recent_transactions", JSON.stringify(records2))
+    );
     console.log(localStorage.setItem("lender_balance", lenderBalance));
     console.log(localStorage.setItem("requestor_balance", requestorsBalance));
     loanData.status = "Approved";
@@ -64,7 +118,7 @@ export const LoanApproval = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  });
+  }, []);
   return (
     <>
       <div className="app-header">

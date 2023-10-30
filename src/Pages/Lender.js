@@ -18,6 +18,8 @@ import "./style.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import curr from "../components/Utilities";
+import { recentTransactions } from "../TestData.js";
+import { Transactions } from "../components/Transactions";
 
 function Lender() {
   const [showBalance, setShowBalance] = useState(false);
@@ -33,7 +35,35 @@ function Lender() {
   const [loanData, setLoanData] = useState(
     JSON.parse(localStorage.getItem("request_from", {})) || null
   );
+  const [recs, setRecs] = useState(recentTransactions);
 
+  useEffect(() => {
+    const records =
+      JSON.parse(localStorage.getItem("recent_transactions", [])) || [];
+    if (records && records.length > 0) {
+      setRecs(records);
+    } else {
+      console.log(
+        localStorage.setItem(
+          "recent_transactions",
+          JSON.stringify(recentTransactions)
+        )
+      );
+    }
+  }, []);
+
+  const filteredTransactions = (
+    JSON.parse(localStorage.getItem("recent_transactions", [])) || []
+  ).filter((transaction) => transaction.beneficiary_id === 2);
+  const sortedTransactions = filteredTransactions
+    .slice(0)
+    .sort((a, b) => b.id - a.id);
+  console.log(sortedTransactions);
+
+  const [state, setState] = useState({
+    query: "",
+    list: sortedTransactions,
+  });
   const toggleShowBalance = () => {
     setShowBalance(!showBalance);
   };
@@ -64,6 +94,12 @@ function Lender() {
                       </div>
                       <center>
                         <div className="col-md-5 balance">
+                          <a>
+                            Welcome{" "}
+                            <strong className="text-success">
+                              {loanData?.accName}
+                            </strong>
+                          </a>
                           <div className="flexy">
                             <small className="col-md-8"> Your Balance </small>
                             <span
@@ -161,47 +197,9 @@ function Lender() {
                           See more
                         </a>
                       </div>
-                      <div className="transactions">
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>{" "}
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>{" "}
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>
-                      </div>
+                      {state.list.map((data, index) => (
+                        <Transactions data={data} key={index} />
+                      ))}
                       <div className=" footer">
                         <div className="flexy">
                           <Link to={"/"} className="col-md-4">

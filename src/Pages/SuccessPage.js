@@ -34,6 +34,7 @@ export const SuccessPage = () => {
 
     // Initialize a variable to keep track of the highest ID
     let highestId = 0;
+    let highestTransactionId = 0;
 
     // Iterate through the records array to find the highest ID
     const records2 = JSON.parse(localStorage.getItem("records", [])) || [];

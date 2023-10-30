@@ -37,9 +37,33 @@ function Home() {
   const toggleShowBalance = () => {
     setShowBalance(!showBalance);
   };
+  const [recs, setRecs] = useState(recentTransactions);
+
+  useEffect(() => {
+    const records =
+      JSON.parse(localStorage.getItem("recent_transactions", [])) || [];
+    if (records && records.length > 0) {
+      setRecs(records);
+    } else {
+      console.log(
+        localStorage.setItem(
+          "recent_transactions",
+          JSON.stringify(recentTransactions)
+        )
+      );
+    }
+  }, []);
+  const filteredTransactions = (
+    JSON.parse(localStorage.getItem("recent_transactions", [])) || []
+  ).filter((transaction) => transaction.beneficiary_id === 1);
+  const sortedTransactions = filteredTransactions
+    .slice(0)
+    .sort((a, b) => b.id - a.id);
+  console.log(sortedTransactions);
+
   const [state, setState] = useState({
     query: "",
-    list: recentTransactions.slice(0).sort((a, b) => b.id - a.id),
+    list: sortedTransactions,
   });
   return (
     <>
@@ -64,13 +88,16 @@ function Home() {
                         </div>
                       </div>
                       <center>
+                        <a>
+                          Welcome{" "}
+                          <strong className="text-info">Star Team</strong> !
+                        </a>
                         <div className="col-md-5 balance">
                           <div className="flexy">
                             <small className="col-md-8"> Your Balance </small>
                             <span
                               onClick={toggleShowBalance}
-                              className="col-md-4"
-                            >
+                              className="col-md-4">
                               {showBalance ? (
                                 <img
                                   className=""
@@ -134,8 +161,7 @@ function Home() {
                         <a
                           href="#"
                           className="offset-md-4"
-                          style={{ fontSize: "11px", color: "grey" }}
-                        >
+                          style={{ fontSize: "11px", color: "grey" }}>
                           See more
                         </a>
                       </div>
