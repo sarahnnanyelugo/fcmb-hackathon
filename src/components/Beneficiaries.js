@@ -83,7 +83,11 @@ function Beneficiaries() {
 
             <div className="row ">
               {state2.list2.map((data, index) => (
-                <AccList data={data} onClick={handleData} />
+                <AccList
+                  data={data}
+                  onClick={handleData}
+                  key={data.beneficiary_id}
+                />
               ))}
 
               <center>
