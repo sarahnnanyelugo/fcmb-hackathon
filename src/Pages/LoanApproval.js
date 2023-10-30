@@ -25,8 +25,9 @@ export const LoanApproval = () => {
   );
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const lenderBalance = balance - requestAmount;
-    const requestorsBalance = requestorBalance + requestAmount;
+    const lenderBalance = parseFloat(balance) - parseFloat(requestAmount);
+    const requestorsBalance =
+      parseFloat(requestorBalance) + parseFloat(requestAmount);
     console.log(localStorage.setItem("lender_balance", lenderBalance));
     console.log(localStorage.setItem("requestor_balance", requestorsBalance));
     loanData.status = true;
@@ -89,7 +90,8 @@ export const LoanApproval = () => {
                             </center>
                             <h5>{curr(loanData.amount)}</h5>
                             <p>
-                              You have approved Abraham Lawal's loan request
+                              You have approved {loanData.accName}'s loan
+                              request
                             </p>
                           </div>
                           <p style={{ marginTop: "30px", fontWeight: "bold" }}>
