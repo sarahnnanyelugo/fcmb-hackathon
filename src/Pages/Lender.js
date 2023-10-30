@@ -15,16 +15,32 @@ import HomeIcon from "../assets/images/home.png";
 import Piggy from "../assets/images/piggy.png";
 import Settings from "../assets/images/setting.png";
 import "./style.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import curr from "../components/Utilities";
 
 function Lender() {
   const [showBalance, setShowBalance] = useState(false);
-  const [balance, setBalance] = useState("");
+  const [balance, setBalance] = useState(
+    localStorage.getItem("lender_balance", "200000") || 200000.45
+  );
+  const [requestAmount, setRequestAmount] = useState(
+    parseFloat(localStorage.getItem("amount", "0"))
+  );
+  const [requestor, setRequestor] = useState(
+    JSON.parse(localStorage.getItem("requestorData", {})) || null
+  );
+  const [loanData, setLoanData] = useState(
+    JSON.parse(localStorage.getItem("request_from", {})) || null
+  );
 
   const toggleShowBalance = () => {
     setShowBalance(!showBalance);
   };
+  useEffect(() => {
+    localStorage.setItem("lender_balance", balance);
+  });
+
   return (
     <>
       <div className="app-header">
@@ -52,8 +68,7 @@ function Lender() {
                             <small className="col-md-8"> Your Balance </small>
                             <span
                               onClick={toggleShowBalance}
-                              className="col-md-4"
-                            >
+                              className="col-md-4">
                               {showBalance ? (
                                 <img
                                   className=""
@@ -71,7 +86,7 @@ function Lender() {
                               )}
                             </span>
                           </div>
-                          <h5>{showBalance ? "₦112,000" : "******"}</h5>
+                          <h5>{showBalance ? curr(balance) : "******"}</h5>
                         </div>
                       </center>
                       <h6 style={{ float: "left" }}>Quick access</h6>
@@ -117,16 +132,24 @@ function Lender() {
                       <h6 style={{ float: "left", fontSize: "10px" }}>
                         P2P lending
                       </h6>{" "}
-                      <br />
-                      <div className="col-md-12 alarm-box flexy">
-                        <p>
-                          Afolabi Lawal is requesting <span>₦10,000</span> from
-                          you
-                        </p>
-                        <Link to={"/loan-details"} style={{ fontSize: "10px" }}>
-                          Open
-                        </Link>
-                      </div>
+                      {loanData && !loanData.status ? (
+                        <>
+                          <br />
+                          <div className="col-md-12 alarm-box flexy">
+                            <p>
+                              {loanData.accName} is requesting{" "}
+                              <span>{curr(loanData.amount)}</span> from you.
+                            </p>
+                            <Link
+                              to={"/loan-details"}
+                              style={{ fontSize: "10px" }}>
+                              Open
+                            </Link>
+                          </div>
+                        </>
+                      ) : (
+                        ""
+                      )}
                       <div className="flexy" style={{ marginTop: "20px" }}>
                         <h6 style={{ fontSize: "12px" }}>
                           Recent transactions
@@ -134,8 +157,7 @@ function Lender() {
                         <a
                           href="#"
                           className="offset-md-4"
-                          style={{ fontSize: "11px", color: "grey" }}
-                        >
+                          style={{ fontSize: "11px", color: "grey" }}>
                           See more
                         </a>
                       </div>
@@ -182,11 +204,11 @@ function Lender() {
                       </div>
                       <div className=" footer">
                         <div className="flexy">
-                          <div className="col-md-4">
+                          <Link to={"/"} className="col-md-4">
                             {" "}
                             <img src={HomeIcon} alt="icon" width="30%" />
                             <h6 style={{ color: "#5c2684" }}>Home</h6>
-                          </div>
+                          </Link>
                           <div className="col-md-4">
                             {" "}
                             <img src={Piggy} alt="icon" width="30%" />

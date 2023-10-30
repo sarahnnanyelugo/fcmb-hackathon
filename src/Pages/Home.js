@@ -15,12 +15,21 @@ import HomeIcon from "../assets/images/home.png";
 import Piggy from "../assets/images/piggy.png";
 import Settings from "../assets/images/setting.png";
 import "./style.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import curr from "../components/Utilities";
 
 function Home() {
   const [showBalance, setShowBalance] = useState(false);
-  const [balance, setBalance] = useState("");
+  const [balance, setBalance] = useState(
+    parseFloat(localStorage.getItem("requestor_balance", 0)) || 0
+  );
+  useEffect(() => {
+    console.log(localStorage.setItem("requestor_balance", balance));
+  });
+  useEffect(() => {
+    console.log(localStorage.setItem("requestor_balance", balance));
+  }, [balance]);
 
   const toggleShowBalance = () => {
     setShowBalance(!showBalance);
@@ -53,8 +62,7 @@ function Home() {
                             <small className="col-md-8"> Your Balance </small>
                             <span
                               onClick={toggleShowBalance}
-                              className="col-md-4"
-                            >
+                              className="col-md-4">
                               {showBalance ? (
                                 <img
                                   className=""
@@ -72,7 +80,7 @@ function Home() {
                               )}
                             </span>
                           </div>
-                          <h5>{showBalance ? "₦2,000" : "******"}</h5>
+                          <h5>{showBalance ? curr(balance) : "******"}</h5>
                         </div>
                       </center>
                       <h6 style={{ float: "left" }}>Quick access</h6>
@@ -121,8 +129,7 @@ function Home() {
                         <a
                           href="#"
                           className="offset-md-4"
-                          style={{ fontSize: "11px", color: "grey" }}
-                        >
+                          style={{ fontSize: "11px", color: "grey" }}>
                           See more
                         </a>
                       </div>

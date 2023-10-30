@@ -1,7 +1,9 @@
 import Top from "../assets/images/top.png";
 import Back from "../assets/images/back.png";
+import Bank from "../assets/images/gtb.png";
 
 import "./style.scss";
+import curr, { dt } from "../components/Utilities";
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -13,7 +15,11 @@ function LoanInterface() {
   const [pin, setPin] = useState("");
   const [toDuration, setToDuration] = useState("2 days");
   const [amount, setAmount] = useState(0);
+  const [payBackDate, setPayBackDate] = useState("Today");
   const [loanNote, setLoanNote] = useState(null);
+  const [requestorBalance, setRequestorBalance] = useState(
+    localStorage.getItem("requestor_balance", 0)
+  );
   const navigate = useNavigate();
   function setThisDuration(curr) {
     if (curr !== toDuration) {
@@ -21,6 +27,25 @@ function LoanInterface() {
       console.log(localStorage.setItem("duration", curr));
     }
   }
+  useEffect(() => {
+    setPayBackDate(dt({ numberOfDays: parseInt(toDuration) }));
+  }, []);
+
+  useEffect(() => {
+    setPayBackDate(dt({ numberOfDays: parseInt(toDuration) }));
+  }, toDuration);
+
+  useEffect(() => {
+    const requestorData = {
+      accName: "James Nnanyelugo",
+      bankName: "Guarantee Trust Bank",
+      bank: Bank,
+    };
+    console.log(
+      localStorage.setItem("requestorData", JSON.stringify(requestorData)),
+      localStorage.setItem("requestor_balance", requestorBalance)
+    );
+  });
   const validPin = "5525";
   function confirmPin(pin) {
     setPin(pin);
@@ -125,17 +150,17 @@ function LoanInterface() {
                             6 days
                           </button>
                           <button
-                            onClick={() => setThisDuration("Custom")}
+                            onClick={() => setThisDuration("7 days")}
                             id="btn4"
                             className={` ${
-                              toDuration === "Custom" ? "curr-active" : ""
+                              toDuration === "7 days" ? "curr-active" : ""
                             }`}>
                             Custom
                           </button>
                         </div>
                         <p>
                           Note: Loan amount will be deducted from your account
-                          automatically on <span> 27/10/2023</span>
+                          automatically on <span> {payBackDate}</span>
                         </p>
                       </div>
                       <div className="col-md-12 remark">

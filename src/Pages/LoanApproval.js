@@ -1,60 +1,130 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Top from "../assets/images/top.png";
 import Tick from "../assets/images/tick.png";
+import LoadingImg from "../assets/images/ld.gif";
+import curr from "../components/Utilities";
 
 import "./style.scss";
 import { Link } from "react-router-dom";
+import { Loader } from "../components/Loader";
 export const LoanApproval = () => {
+  const [balance, setBalance] = useState(
+    localStorage.getItem("lender_balance", "200000") || 200000.45
+  );
+  const [requestorBalance, setRequestorBalance] = useState(
+    localStorage.getItem("requestor_balance", "0") || 0
+  );
+  const [requestAmount, setRequestAmount] = useState(
+    parseFloat(localStorage.getItem("amount", "0"))
+  );
+  const [requestor, setRequestor] = useState(
+    JSON.parse(localStorage.getItem("requestorData", {})) || null
+  );
+  const [loanData, setLoanData] = useState(
+    JSON.parse(localStorage.getItem("request_from", {})) || null
+  );
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const lenderBalance = balance - requestAmount;
+    const requestorsBalance = requestorBalance + requestAmount;
+    console.log(localStorage.setItem("lender_balance", lenderBalance));
+    console.log(localStorage.setItem("requestor_balance", requestorsBalance));
+    loanData.status = true;
+    console.log(localStorage.setItem("request_from", JSON.stringify(loanData)));
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  });
   return (
     <>
       <div className="app-header">
         <center>
           <div className="col-md-3">
-            <center>
-              <div className="col-md-10 app">
-                <div className="app-inner">
-                  <div className="app-inner2">
-                    <div className="app-face">
-                      {" "}
-                      <img src={Top} alt="icon" width="100%" />{" "}
-                      <center>
-                        <h6 style={{ marginTop: "30px" }}>Loan Approved</h6>
-                      </center>
-                      <div className="col-md-12 success-div">
-                        <center>
-                          <div className="col-md-4">
-                            {" "}
-                            <img src={Tick} alt="icon" width="100%" />
-                          </div>
-                        </center>
-                        <h5>₦10,000</h5>
-                        <p>You have approved Abraham Lawal's loan request</p>
-                      </div>
-                      <p style={{ marginTop: "30px", fontWeight: "bold" }}>
-                        <span>₦10,000</span> has been deducted from your account
-                        and sent to
-                        <span style={{ fontSize: "14px" }}>
+            {loading ? (
+              <>
+                <center>
+                  <div className="col-md-10 app">
+                    <div className="app-inner">
+                      <div className="app-inner2">
+                        <div className="app-face">
                           {" "}
-                          Abraham Lawal
-                        </span>{" "}
-                      </p>
-                      <p> Abraham Lawal's payback date is:</p>
-                      <h5 style={{ marginBottom: "50px", fontWeight: "bold" }}>
-                        27/04/2023
-                      </h5>
-                      <Link to={"/"}>
-                        {" "}
-                        <button className="confirm-btn">Back to home</button>
-                      </Link>
-                      <br />
-                      <br />
-                      <br />
-                      <div className="dash col-md-5">&nbsp;</div>
+                          <img src={Top} alt="icon" width="100%" />{" "}
+                          <center>
+                            <h6 style={{ marginTop: "30px" }}>Processing...</h6>
+                          </center>
+                          <div className="col-md-12 success-div">
+                            <center>
+                              <div className="col-md-4">
+                                {" "}
+                                <img src={LoadingImg} alt="icon" width="100%" />
+                              </div>
+                            </center>
+                            <h5>{curr(loanData.amount)}</h5>
+                            <p>Please Wait</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </center>
+                </center>
+              </>
+            ) : (
+              <>
+                <center>
+                  <div className="col-md-10 app">
+                    <div className="app-inner">
+                      <div className="app-inner2">
+                        <div className="app-face">
+                          {" "}
+                          <img src={Top} alt="icon" width="100%" />{" "}
+                          <center>
+                            <h6 style={{ marginTop: "30px" }}>Loan Approved</h6>
+                          </center>
+                          <div className="col-md-12 success-div">
+                            <center>
+                              <div className="col-md-4">
+                                {" "}
+                                <img src={Tick} alt="icon" width="100%" />
+                              </div>
+                            </center>
+                            <h5>{curr(loanData.amount)}</h5>
+                            <p>
+                              You have approved Abraham Lawal's loan request
+                            </p>
+                          </div>
+                          <p style={{ marginTop: "30px", fontWeight: "bold" }}>
+                            <span>{curr(loanData.amount)}</span> has been
+                            deducted from your account and sent to
+                            <span style={{ fontSize: "14px" }}>
+                              {" "}
+                              {loanData.accName}
+                            </span>{" "}
+                          </p>
+                          <p> {loanData.accName}'s payback date is:</p>
+                          <h5
+                            style={{
+                              marginBottom: "50px",
+                              fontWeight: "bold",
+                            }}>
+                            {loanData.paybackDate}
+                          </h5>
+                          <Link to={"/lender"}>
+                            {" "}
+                            <button className="confirm-btn">
+                              Back to home
+                            </button>
+                          </Link>
+                          <br />
+                          <br />
+                          <br />
+                          <div className="dash col-md-5">&nbsp;</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </center>
+              </>
+            )}
           </div>
         </center>
       </div>
