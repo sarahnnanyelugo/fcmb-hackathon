@@ -18,6 +18,8 @@ import "./style.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import curr from "../components/Utilities";
+import { recentTransactions } from "../TestData.js";
+import { Transactions } from "../components/Transactions";
 
 function Home() {
   const [showBalance, setShowBalance] = useState(false);
@@ -34,6 +36,10 @@ function Home() {
   const toggleShowBalance = () => {
     setShowBalance(!showBalance);
   };
+  const [state, setState] = useState({
+    query: "",
+    list: recentTransactions,
+  });
   return (
     <>
       <div className="app-header">
@@ -62,7 +68,8 @@ function Home() {
                             <small className="col-md-8"> Your Balance </small>
                             <span
                               onClick={toggleShowBalance}
-                              className="col-md-4">
+                              className="col-md-4"
+                            >
                               {showBalance ? (
                                 <img
                                   className=""
@@ -129,51 +136,14 @@ function Home() {
                         <a
                           href="#"
                           className="offset-md-4"
-                          style={{ fontSize: "11px", color: "grey" }}>
+                          style={{ fontSize: "11px", color: "grey" }}
+                        >
                           See more
                         </a>
                       </div>
-                      <div className="transactions">
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>{" "}
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>{" "}
-                        <div className="flexy">
-                          <div className="col-md-2">
-                            {" "}
-                            <img src={Arrow} alt="icon" width="70%" />
-                          </div>
-                          <div className="col-md-5">
-                            <h6>Payment for data</h6>
-                            <a href="#">Tap for more details</a>
-                          </div>
-                          <div className="col-md-3 offset-md-2">
-                            <h6>-₦5000.000</h6>
-                          </div>
-                        </div>
-                      </div>
+                      {state.list.map((data, index) => (
+                        <Transactions data={data} />
+                      ))}
                       <div className=" footer">
                         <div className="flexy">
                           <div className="col-md-4">
