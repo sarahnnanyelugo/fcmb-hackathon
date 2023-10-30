@@ -1,22 +1,26 @@
-import Icon from "../assets/images/arrow.png";
+import Out from "../assets/images/arrow.png";
+import In from "../assets/images/add.png";
 
 export const recentTransactions = [
   {
     purchase: "Payment for data",
-    Bank: Icon,
-    amount: 10000,
+    Bank: Out,
+    amount: -10000,
     id: 1,
+    date: "2023-10-12",
   },
   {
     purchase: "Peer 2 Peer loan",
-    Bank: Icon,
+    Bank: In,
     amount: 5000,
-    id: 1,
+    id: 2,
+    date: "2023-10-12",
   },
   {
     purchase: "DSTV subscription",
-    Bank: Icon,
-    amount: 18000,
-    id: 1,
+    Bank: Out,
+    amount: -18000,
+    id: 3,
+    date: "2023-10-28",
   },
 ];
