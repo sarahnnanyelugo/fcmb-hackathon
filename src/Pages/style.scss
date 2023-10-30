@@ -268,3 +268,18 @@
   font-size: 12px;
   width: 100%;
 }
+.data-set {
+  text-align: left;
+  ul li {
+    font-size: 11px;
+    line-height: 25px;
+    span {
+      font-weight: bold;
+    }
+  }
+}
+.chart-div {
+  margin-top: 50px;
+  border: solid 1px rgb(190, 188, 188);
+  border-radius: 5px;
+}
