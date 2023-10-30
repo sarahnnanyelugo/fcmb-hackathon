@@ -4,10 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/yarn.lock
+yarn.lock
 # testing
 /coverage
-
+/.history
+/.vscode
+/.idea
 # production
 /build
 
