@@ -4,8 +4,6 @@ import Menu from "../assets/images/menu.png";
 import Bell from "../assets/images/bell.png";
 import Eye from "../assets/images/eye.png";
 import Eye2 from "../assets/images/eye2.png";
-import Add from "../assets/images/add.png";
-import Transfer from "../assets/images/trans.png";
 import Card from "../assets/images/atm.png";
 import Mobile from "../assets/images/topup.png";
 import Lending from "../assets/images/lend.png";
@@ -20,6 +18,9 @@ import { Link } from "react-router-dom";
 import curr from "../components/Utilities";
 import { recentTransactions } from "../TestData.js";
 import { Transactions } from "../components/Transactions";
+import Add from "../assets/images/add.png";
+import Transfer from "../assets/images/trans.png";
+import MoneyFlow from "../components/MoneyFlow";
 
 function Home() {
   const [showBalance, setShowBalance] = useState(false);
@@ -94,38 +95,35 @@ function Home() {
                       <div className="flexy col-md-12 access">
                         <div className="col-md-4">
                           {" "}
-                          <img src={Add} alt="icon" width="40%" />
-                          <h6>Add money</h6>
+                          <MoneyFlow icon={Add} heading="Add money" />
                         </div>
                         <div className="col-md-4">
                           {" "}
-                          <img src={Transfer} alt="icon" width="40%" />
-                          <h6>Transfer</h6>
+                          <MoneyFlow icon={Transfer} heading="Transfer" />
+                        </div>
+                        <div className="col-md-4">
+                          <Link to={"/loan-interface"}>
+                            <img src={Lending} alt="icon" width="40%" />
+                            <h6>P2P Lending</h6>
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="flexy col-md-12 access2">
+                        <div className="col-md-4">
+                          <Link to={"/expense-tracker"}>
+                            <img src={Data} alt="icon" width="40%" />
+                            <h6>Expense Tracker</h6>
+                          </Link>
                         </div>
                         <div className="col-md-4">
                           {" "}
                           <img src={Card} alt="icon" width="40%" />
                           <h6>Card</h6>
                         </div>
-                      </div>
-                      <div className="flexy col-md-12 access2">
                         <div className="col-md-4">
                           {" "}
                           <img src={Mobile} alt="icon" width="40%" />
                           <h6>Mobile Topup</h6>
-                        </div>
-                        <div className="col-md-4">
-                          {" "}
-                          <Link to={"/loan-interface"}>
-                            {" "}
-                            <img src={Lending} alt="icon" width="40%" />
-                            <h6>P2P Lending</h6>
-                          </Link>
-                        </div>
-                        <div className="col-md-4">
-                          {" "}
-                          <img src={Data} alt="icon" width="40%" />
-                          <h6>Data purchase</h6>
                         </div>
                       </div>
                       <a href="#">Show More</a>

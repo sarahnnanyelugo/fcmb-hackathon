@@ -114,7 +114,7 @@ function LoanInterface() {
                           Request for short term loans
                         </p>
                       </div>
-                      <div className="col-md-12">
+                      <div className="col-md-12" style={{ marginTop: "80px" }}>
                         {" "}
                         <Beneficiaries />
                       </div>

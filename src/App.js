@@ -8,6 +8,9 @@ import Lender from "./Pages/Lender";
 import LoanDetails from "./Pages/LoanDetails";
 import { LoanApproval } from "./Pages/LoanApproval";
 import LoanList from "./Pages/LoanList";
+import ExpenseTracker from "./Pages/ExpenseTracker";
+import TrackerInterface from "./Pages/TrackerInterface";
+import ExpenseChart from "./Pages/Chart";
 function App() {
   return (
     <>
@@ -19,6 +22,9 @@ function App() {
         <Route path="loan-details" element={<LoanDetails />} />
         <Route path="loan-approval" element={<LoanApproval />} />
         <Route path="loan-list" element={<LoanList />} />
+        <Route path="expense-tracker" element={<ExpenseTracker />} />
+        <Route path="tracker-interface" element={<TrackerInterface />} />
+        <Route path="expense-chart" element={<ExpenseChart />} />
       </Routes>
     </>
   );
