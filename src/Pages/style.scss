@@ -239,62 +239,20 @@
   }
 }
 
-.business-pricing-tab {
-  .tabs {
-    display: flex;
-    border-radius: 35px;
-    border: solid 2px #cef0ff;
-    width: 18%;
-    padding: 8px 3px;
-    font-family: rebondG-Bold;
-    @media screen and (max-width: 620px) {
-      width: 40%;
-      margin-top: -30%;
-      margin-left: 0%;
-    }
-  }
-  @media screen and (max-width: 620px) {
-    .tabs {
-      button {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  .tab {
-    width: 90%;
-    background: transparent;
-    padding: 5px 0;
-    border: none;
-    color: grey;
-    // border-radius: 35px !important;
-    font-size: 16px;
-    @media screen and (max-width: 620px) {
-      width: 100%;
-    }
-  }
-
-  button.active2 {
+.prd-active {
+  font-weight: bold;
+  background: #f2eef5;
+  color: #6f3f92;
+  border-radius: 5px;
+  // border-bottom: solid 3px #0098da;
+  &:hover {
     font-weight: bold;
-    background: #0098da;
-    color: #fff;
-    border-radius: 35px;
-    // border-bottom: solid 3px #0098da;
+    background: #f2eef5;
+    color: #6f3f92;
+    border-radius: 5px;
   }
-  button.active3 {
-    font-weight: bold;
-    border-bottom: solid 3px #0098da;
-    color: #000;
-  }
-  .panel {
-    display: none;
-    color: #161617;
-    font-family: rebondG;
-    line-height: 40px;
-    padding-top: 65px;
-    background: #fff;
-  }
-  .panel.active2 {
-    display: block;
-  }
+}
+.records-tab {
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
