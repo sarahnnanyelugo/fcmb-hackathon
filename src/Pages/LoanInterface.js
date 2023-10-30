@@ -101,10 +101,15 @@ function LoanInterface() {
                       <img src={Top} alt="icon" width="100%" />{" "}
                       <div className="col-md-12">
                         {" "}
-                        <Link to={"/"} style={{ float: "left" }}>
-                          {" "}
-                          <img src={Back} alt="icon" width="60%" />
-                        </Link>
+                        <div className="col-md-12 flexy">
+                          <Link to={"/"} style={{ float: "left" }}>
+                            {" "}
+                            <img src={Back} alt="icon" width="60%" />
+                          </Link>
+                          <Link to={"/loan-list"} className="offset-2">
+                            Loan records
+                          </Link>
+                        </div>
                         <p style={{ float: "left" }}>
                           Request for short term loans
                         </p>
@@ -130,7 +135,8 @@ function LoanInterface() {
                             id="btn1"
                             className={` ${
                               toDuration === "2 days" ? "curr-active" : ""
-                            }`}>
+                            }`}
+                          >
                             2 days
                           </button>
                           <button
@@ -138,7 +144,8 @@ function LoanInterface() {
                             id="btn2"
                             className={` ${
                               toDuration === "4 days" ? "curr-active" : ""
-                            }`}>
+                            }`}
+                          >
                             4 days
                           </button>
                           <button
@@ -146,7 +153,8 @@ function LoanInterface() {
                             id="btn3"
                             className={` ${
                               toDuration === "6 days" ? "curr-active" : ""
-                            }`}>
+                            }`}
+                          >
                             6 days
                           </button>
                           <button
@@ -154,7 +162,8 @@ function LoanInterface() {
                             id="btn4"
                             className={` ${
                               toDuration === "7 days" ? "curr-active" : ""
-                            }`}>
+                            }`}
+                          >
                             Custom
                           </button>
                         </div>
